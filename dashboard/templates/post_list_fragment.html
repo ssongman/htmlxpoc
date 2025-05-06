@@ -1,0 +1,21 @@
+
+<ul>
+    {% for post in posts %}
+      <li>
+        <strong>{{ post.title }}</strong>
+        <button 
+          hx-get="/posts/{{ post.id }}/edit" 
+          hx-target="#main-area"
+          hx-swap="innerHTML"
+        >✏️ 수정</button>
+        <button 
+          hx-delete="/posts/{{ post.id }}" 
+          hx-target="#main-area" 
+          hx-swap="outerHTML"
+        >❌ 삭제</button>
+      </li>
+    {% else %}
+      <li>게시글이 없습니다.</li>
+    {% endfor %}
+  </ul>
+  

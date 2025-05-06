@@ -1,0 +1,15 @@
+<form 
+  hx-post="/posts" 
+  hx-target="#main-area" 
+  hx-swap="outerHTML"
+>
+  <input type="text" name="title" placeholder="제목" required><br>
+  <textarea name="content" placeholder="내용" required></textarea><br>
+  <button type="submit">작성</button>
+  <button 
+    type="button"
+    hx-get="/posts/fragment"
+    hx-target="#main-area"
+    hx-swap="outerHTML"
+  >취소</button>
+</form>

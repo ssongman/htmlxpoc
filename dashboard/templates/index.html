@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<button hx-get="/posts/new" hx-target="#main-area" hx-swap="innerHTML">➕ 글쓰기</button>
+<div id="main-area">
+  {% include "post_list_fragment.html" %}
+</div>
+{% endblock %}
