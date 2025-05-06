@@ -102,7 +102,7 @@ python hello.py
 
 $ cd ~/song/htmx
 
-$ cat > app.py
+$ cat > todo.py
 
 ```
 
@@ -230,7 +230,7 @@ HTMLX 핵심 포인트
 
 pip install flask
 
-python app.py
+python todo.py
 
 ```
 
@@ -299,4 +299,60 @@ http://localhost5000
 
 
 ## 2) VSCode
+
+
+
+### (1) 가상환경 준비
+
+프로젝트마다 독립된 패키지를 관리해야 하므로  가상환경을 준비한다.
+
+
+
+```sh
+
+# 1) 프로젝트 폴더 생성 후 이동
+$ mkdir myproject
+  cd myproject
+
+
+# 2) 가상환경 생성
+$ python3 -m venv venv
+
+# 3) 가상환경 활성화(맥기준)
+$ source venv/bin/activate
+   # 프롬프트 앞에 (venv) 표시
+
+
+
+# 비활성화시....
+$ deactivate
+
+
+```
+
+
+
+
+
+### (2) VS Code에서 Python 인터프리터 선택
+
+VS Code는 기본적으로 가상환경을 자동 감지하지만, 감지되지 않을 경우:
+
+	1.	Ctrl+Shift+P → **Python: Select Interpreter** 입력
+	1.	Python: Select Interpreter 입력 → 선택
+	1.	목록에서 ./venv/bin/python 또는 .\venv\Scripts\python.exe 선택
+
+
+
+VS Code는 자동으로 .vscode/settings.json에 다음을 추가할 수 있음.
+
+```sh
+
+{
+  "python.pythonPath": "venv/bin/python"
+}
+
+```
+
+
 
