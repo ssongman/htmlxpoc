@@ -8,6 +8,19 @@ HTMLX(또는 [htmx](https://htmx.org/))는 HTML 속성만으로 서버와의 상
 
 
 
+## 1) frontend framwork 차이점
+
+|        **React/Vue**         |                HTMX                 |
+| :--------------------------: | :---------------------------------: |
+| **전체 UI 상태를 JS로 관리** | **HTML을 서버에서 조각으로 렌더링** |
+|  **클라이언트 주도** 렌더링  |        **서버 주도** 렌더링         |
+
+
+
+
+
+
+
 # 2. Hello World
 
 간단한 “Hello World” 버튼 → 서버에서 텍스트 가져오기
@@ -18,7 +31,7 @@ HTMLX(또는 [htmx](https://htmx.org/))는 HTML 속성만으로 서버와의 상
 
 
 
-```
+```python
 # hello.py
 from flask import Flask
 
@@ -211,34 +224,17 @@ HTMLX 핵심 포인트
 
 
 
-
-
-
-
-
-
-
-
 ## 2) 설치 및 실행
 
 ```
+
 pip install flask
+
 python app.py
+
 ```
 
 브라우저에서 http://localhost:5000 접속
-
-
-
-
-
-**📘 확장 아이디어**
-
-​	•	버튼으로 TODO 삭제 (hx-delete)
-
-​	•	완료 상태 토글 (hx-patch)
-
-​	•	무한스크롤 (hx-trigger="revealed")
 
 
 
@@ -248,23 +244,59 @@ python app.py
 
 
 
-## 1) python pod 실행
+## 1) k8s pod 환경
+
+### (1) python pod 실행
 
 ```sh
 
 $ kubectl -n temp create deploy python --image=python -- sleep 365d
 
+# python pod 내로 진입
 $ kubectl -n temp exec -it deploy/python -- bash
 
 ```
 
 
 
-## 2) port-forward
+### (2) python 소스 코드 작성
+
+```sh
+
+$ mkdir -p ~/song/htmx
+  cd ~/song/htmx
+
+$ cat > app.py
+# <소스코드 작성>
+
+
+
+# 앱 실행
+$ python app.py
+
+```
+
+
+
+### (3) port-forward
+
+local 에서 앱 접속
 
 ```sh
 
 $ kubectl port-forward pod/flask-htmx-5cbb8f5d6d-xxxx 5000:5000
 
+
+
+
+#
+http://localhost5000
+
 ```
+
+
+
+
+
+## 2) VSCode
 
