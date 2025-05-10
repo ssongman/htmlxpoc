@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, request
 from models import get_all_posts, get_post, create_post, update_post, delete_post
+from time import sleep  # sleep 함수 임포트
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -8,6 +9,13 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route("/")
 def index():
     return render_template("index.html", posts=get_all_posts())
+
+@app.route("/health")
+def health():
+    for i in range(5):
+        print(f"Progress: {i + 1} second(s) elapsed")
+        sleep(1)  # 1초 대기
+    return "health OK!"
 
 @app.route("/posts/fragment")
 def list_posts():
