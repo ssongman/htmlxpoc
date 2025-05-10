@@ -12,10 +12,14 @@ def index():
 
 @app.route("/health")
 def health():
+    return "health OK!"
+
+@app.route("/healthdelay")
+def healthdelay():
     for i in range(5):
         print(f"Progress: {i + 1} second(s) elapsed")
         sleep(1)  # 1초 대기
-    return "health OK!"
+    return "health deply OK!"
 
 @app.route("/posts/fragment")
 def list_posts():
